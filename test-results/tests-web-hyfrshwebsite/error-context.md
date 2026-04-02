@@ -1,0 +1,1773 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: tests\web.spec.js >> hyfrshwebsite
+- Location: tests\web.spec.js:3:1
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('input[aria-label="Search products"]:visible').first()
+    - locator resolved to <input value="" id="_r_3_" type="search" placeholder=" " aria-label="Search products" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-10 pr-4"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    43 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+```
+
+# Page snapshot
+
+```yaml
+- generic:
+  - generic:
+    - banner:
+      - generic:
+        - link:
+          - /url: /
+          - img
+        - generic:
+          - button:
+            - generic: Pick-up location
+            - generic:
+              - generic: Midas Tower – Hinjawadi, Pune, Maharashtra , 411057
+              - img
+          - generic:
+            - generic:
+              - img
+              - generic:
+                - generic:
+                  - searchbox
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Search for vegetables
+                      - generic: Search for fruits
+                      - generic: Search for leafy greens
+        - generic:
+          - button:
+            - img
+          - generic:
+            - link:
+              - /url: /shopping-cart/
+              - img
+          - button: Login
+    - main:
+      - generic:
+        - main:
+          - generic:
+            - link:
+              - /url: /products/
+              - img
+            - generic:
+              - link:
+                - /url: /products/
+                - img
+              - link:
+                - /url: /products/
+                - img
+              - link:
+                - /url: /products/
+                - img
+            - generic:
+              - tablist:
+                - button:
+                  - generic: All Products
+                - button:
+                  - generic: Fresh leafy
+                - button:
+                  - generic: Vegetables
+                - button:
+                  - generic: Fruits
+                - button:
+                  - generic: Exotics
+                - button:
+                  - generic: Fresh Cuts
+              - generic:
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=156-157
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Ripe Peeled Jackfruit
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=155-156
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Tendli Cuts
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=154-155
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Suran Diced Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=153-154
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Snake Gourd Cuts
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=152-153
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Raw Mango Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=151-152
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pumpkin Slice Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=150-151
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pumpkin Diced Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=149-150
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Onion Samber Peeled
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=148-149
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Onion Rings Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=147-148
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Green Peas Shelled Pkd
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=146-147
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Ginger Peeled Cut
+                    - paragraph: 100 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=145-146
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Garlic Peeled Pkd
+                    - paragraph: 100 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=144-145
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Drumstick Batons Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=143-144
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cucumber Snacking Sticks
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=142-143
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cucumber White/Green Peeled
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=141-142
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cluster Beans Cuts
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=140-141
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cauliflower- Green Peas Mix
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=139-140
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cauliflower Florets Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=138-139
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Carrot Snacking Sticks
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=136-137
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Carrot Julian Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=135-136
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Capsicum Red/Yellow Julienne
+                    - paragraph: 100 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=134-135
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Capsicum Green Julian Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=133-134
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cabbage Shredded Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=132-133
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Brocolli Florets Cut
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=131-132
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Bitter Gourd Cuts
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=130-131
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Beet Root Snacking Sticks
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=129-130
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Banana Stem Cut (Pkd)
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=128-129
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: American Sweet Corn Shelled
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=127-128
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Jackfruits Raw Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=126-127
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Jackfruit Pieces Pkd
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=125-126
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: French Beans Cuts
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=124-125
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Watermelon Slices Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=123-124
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sugarcane Cube Pkd
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=122-123
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pomo Grains Pkd
+                    - paragraph: 100 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=121-122
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pineapple Cuts/Cubes
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=120-121
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pineapple Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=119-120
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Oranges Dressed Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=118-119
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Muskmelon Cuts
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=117-118
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Coconut Pieces Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=116-117
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Coconut Grated Cut
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=115-116
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Apple Fruit Salad
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=106-106
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Zucchini Yellow
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=105-105
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Zucchini Green
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹100
+                        - generic: ₹200
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=104-104
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Yam Cube
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹50
+                        - generic: ₹100
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=103-103
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Watermelon Kiran
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=102-102
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sprouts Moong
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=101-101
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sprouts Mataki
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=100-100
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Snake Gourd
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=99-99
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sapota Chikoo
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=98-98
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Figs Fresh 250g
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=97-97
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Cucumber Mangalore
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=96-96
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Chilli Small Bhavnagri
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=95-95
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Beans - Cowpea
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=94-94
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Beans - Broad
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=93-93
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Tomato Local
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=92-92
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Tomato Hybrid Red
+                    - paragraph: 975 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=91-91
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Tinda
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹10
+                        - generic: ₹20
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=90-90
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Tender coconut
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=89-89
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sweet Potato
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=88-88
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sweet Corn
+                    - paragraph: 2 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=87-87
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sun Melon
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=86-86
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Spring Onion
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=85-85
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sponge Gourd
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=81-81
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Spinach (without roots)
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=80-80
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Sambhar Onion
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=79-79
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Ridge Gourd
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=78-78
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Radish White
+                    - paragraph: 425 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=77-77
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Potato
+                    - paragraph: 425 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=74-74
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Plum Indian
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=72-72
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pineapple
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=71-71
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Pear imported USA
+                    - paragraph: 2 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=70-70
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Papaya - Semi Ripe
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=69-69
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Orange Nagpur
+                    - paragraph: 475 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=68-68
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Orange Kinnow
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=67-67
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Onion
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=66-66
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Musk Melon
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=65-65
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mushroom Button
+                    - paragraph: 200 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=64-64
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mint Leaves
+                    - paragraph: 75 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=63-63
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Methi
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=62-62
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango PAIRI
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=60-60
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango KESAR (KG)
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=59-59
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango CHAUSA
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=58-58
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango BADAMI
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=57-57
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango ALPHANSO 6 PC
+                    - paragraph: 6 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=56-56
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango ALP PREMIUM (12pc)
+                    - paragraph: 12 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=55-55
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango LANGDA
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=54-54
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango Dasheri
+                    - paragraph: 1000 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=53-53
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango totapuri ripe
+                    - paragraph: 2 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=52-52
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango Sindhura
+                    - paragraph: 2 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=51-51
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mango Raw
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=50-50
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Mandrain Orange
+                    - paragraph: 250 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=49-49
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Lettuce iceberg
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=48-48
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Lemon
+                    - paragraph: 4 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=47-47
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Ladies Finger
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=46-46
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Kiwi Zespri Sungold
+                    - paragraph: 3 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=45-45
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Kiwi Green
+                    - paragraph: 3 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=44-44
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Guava Thai
+                    - paragraph: 1 unit
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=43-43
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Guava Fresh
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=42-42
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Grapes Thompson
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+                - generic:
+                  - link:
+                    - /url: /products/details/?id=41-41
+                  - generic:
+                    - img
+                    - status: 50% OFF
+                  - generic:
+                    - heading [level=3]: Grapes Sonaka Seedless
+                    - paragraph: 500 g
+                    - generic:
+                      - generic:
+                        - generic: ₹1
+                        - generic: ₹2
+                      - generic:
+                        - button: ADD
+    - contentinfo:
+      - generic:
+        - generic:
+          - generic:
+            - heading [level=3]: Useful Links
+            - generic:
+              - generic:
+                - link:
+                  - /url: /feedback/
+                  - text: Feedback
+                - link:
+                  - /url: /privacy/
+                  - text: Privacy
+                - link:
+                  - /url: /terms/
+                  - text: Terms & Conditions
+                - link:
+                  - /url: /shipping-policy/
+                  - text: Shipping Policy
+                - link:
+                  - /url: /refund-policy/
+                  - text: Refund Policy
+                - link:
+                  - /url: /about/
+                  - text: About Us
+                - link:
+                  - /url: /contact/
+                  - text: Contact
+          - generic:
+            - generic:
+              - heading [level=3]: Categories
+            - generic:
+              - link:
+                - /url: /products/?category=
+                - text: All Products
+              - link:
+                - /url: /products/?category=1
+                - text: Fresh leafy
+              - link:
+                - /url: /products/?category=3
+                - text: Vegetables
+              - link:
+                - /url: /products/?category=2
+                - text: Fruits
+              - link:
+                - /url: /products/?category=5
+                - text: Exotics
+              - link:
+                - /url: /products/?category=6
+                - text: Fresh Cuts
+        - generic:
+          - generic:
+            - img
+            - paragraph: © HyprFrsh, 2025-2026
+          - generic:
+            - generic: Download App
+            - generic:
+              - generic:
+                - img
+                - text: App Store — Coming Soon
+              - generic:
+                - img
+                - text: Google Play — Coming Soon
+        - paragraph: "\"HyprFrsh\" is a fresh produce and grocery delivery platform of HYPRFRSH TECHNOLOGIES PRIVATE LIMITED. All rights reserved."
+  - alert
+  - dialog "Welcome to HyprFrsh! 🌿" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - img "HyprFrsh" [ref=e5]
+        - heading "Welcome to HyprFrsh! 🌿" [level=2] [ref=e6]
+        - paragraph [ref=e7]: The freshest fruits & vegetables, straight from the farm to your table.
+      - button "Close" [active] [ref=e8] [cursor=pointer]:
+        - img [ref=e9]
+    - generic [ref=e12]:
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - img [ref=e16]
+          - text: Farm-fresh produce, harvested daily
+        - listitem [ref=e19]:
+          - img [ref=e21]
+          - text: Convenient pickup points near you
+        - listitem [ref=e24]:
+          - img [ref=e26]
+          - text: No preservatives, 100% natural
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Welcome Offer
+        - generic [ref=e31]:
+          - img [ref=e32]
+          - paragraph [ref=e36]: Get ₹60 wallet balance on your first order!
+      - generic [ref=e37]:
+        - link "Start Shopping" [ref=e38] [cursor=pointer]:
+          - /url: /
+        - button "Maybe Later" [ref=e39] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1  | const { test, expect } = require('@playwright/test');
+  2  | 
+  3  | test('hyfrshwebsite', async ({ page }) => {
+  4  | 
+  5  |    await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
+  6  |   await page.waitForTimeout(1500);
+  7  | 
+  8  |   // Close promo popup
+  9  |   const popupClose = page.locator('button[aria-label="Close"]');
+  10 |   if (await popupClose.isVisible()) {
+  11 |     await popupClose.click({ force: true });
+  12 |     console.log("Popup closed");
+  13 |   }
+  14 | 
+  15 |   // Click Select manually
+  16 |   await page.locator('button:has-text("Select manually")').click();
+  17 |   console.log("Clicked Select Manually");
+  18 |   await page.waitForTimeout(1000);
+  19 | 
+  20 |   // Select Midas Tower
+  21 |   await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
+  22 |   console.log("Midas Tower selected");
+  23 | 
+  24 |  await page.waitForLoadState('load');
+  25 |   await page.waitForTimeout(1500);
+  26 | 
+  27 |   // 🔍 SEARCH for Watermelon
+  28 | const searchInput = page.locator('input[aria-label="Search products"]:visible');
+  29 | 
+  30 | await expect(searchInput.first()).toBeVisible({ timeout: 8000 });
+  31 | 
+> 32 | await searchInput.first().click();
+     |                           ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  33 | await searchInput.first().fill('watermelon');
+  34 | await page.keyboard.press('Enter');
+  35 | 
+  36 | console.log("Searching watermelon...");
+  37 | await page.waitForTimeout(2000);
+  38 | 
+  39 |   // ADD Watermelon
+  40 |   const addBtn = page.locator('button[aria-label="Add Watermelon Kiran to cart"]');
+  41 |   await addBtn.scrollIntoViewIfNeeded();
+  42 |   await expect(addBtn).toBeVisible({ timeout: 10000 });
+  43 |   await addBtn.click();
+  44 |   console.log("Watermelon added");
+  45 | 
+  46 |   // Increase quantity 2 times
+  47 |   const plus = page.locator('button[aria-label*="Increase Quantity"]');
+  48 |   await plus.first().click();
+  49 |   await plus.first().click();
+  50 |   console.log("Quantity increased to 3");
+  51 | 
+  52 | //   // Open Cart
+  53 | //   await page.locator('a[aria-label*="Cart"]').click();
+  54 | //   console.log("Cart opened!");
+  55 | 
+  56 | 
+  57 | 
+  58 | });
+```
