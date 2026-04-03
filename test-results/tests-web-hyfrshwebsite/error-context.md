@@ -35,13 +35,14 @@ Call log:
       - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
     - retrying click action
       - waiting 100ms
-    43 × waiting for element to be visible, enabled and stable
+    42 × waiting for element to be visible, enabled and stable
        - element is visible, enabled and stable
        - scrolling into view if needed
        - done scrolling
        - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
      - retrying click action
        - waiting 500ms
+    - waiting for element to be visible, enabled and stable
 
 ```
 
