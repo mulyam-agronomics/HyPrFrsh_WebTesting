@@ -6,43 +6,22 @@
 
 # Test info
 
-- Name: tests\web.spec.js >> hyfrshwebsite
-- Location: tests\web.spec.js:3:1
+- Name: tests\login.spec.js >> Hyprfrsh login button test
+- Location: tests\login.spec.js:3:5
 
 # Error details
 
 ```
-Test timeout of 30000ms exceeded.
-```
+Error: expect(locator).toBeEnabled() failed
 
-```
-Error: locator.click: Test timeout of 30000ms exceeded.
+Locator: locator('div[role="dialog"]:has(input[placeholder="10-digit mobile number"])').getByRole('button', { name: /send otp/i })
+Expected: enabled
+Timeout: 15000ms
+Error: element(s) not found
+
 Call log:
-  - waiting for locator('input[aria-label="Search products"]:visible').first()
-    - locator resolved to <input value="" id="_r_3_" type="search" placeholder=" " aria-label="Search products" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-10 pr-4"/>
-  - attempting click action
-    2 × waiting for element to be visible, enabled and stable
-      - element is visible, enabled and stable
-      - scrolling into view if needed
-      - done scrolling
-      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
-    - retrying click action
-    - waiting 20ms
-    2 × waiting for element to be visible, enabled and stable
-      - element is visible, enabled and stable
-      - scrolling into view if needed
-      - done scrolling
-      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
-    - retrying click action
-      - waiting 100ms
-    42 × waiting for element to be visible, enabled and stable
-       - element is visible, enabled and stable
-       - scrolling into view if needed
-       - done scrolling
-       - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
-     - retrying click action
-       - waiting 500ms
-    - waiting for element to be visible, enabled and stable
+  - Expect "toBeEnabled" with timeout 15000ms
+  - waiting for locator('div[role="dialog"]:has(input[placeholder="10-digit mobile number"])').getByRole('button', { name: /send otp/i })
 
 ```
 
@@ -1679,96 +1658,79 @@ Call log:
                 - text: Google Play — Coming Soon
         - paragraph: "\"HyprFrsh\" is a fresh produce and grocery delivery platform of HYPRFRSH TECHNOLOGIES PRIVATE LIMITED. All rights reserved."
   - alert
-  - dialog "Welcome to HyprFrsh! 🌿" [ref=e2]:
-    - generic [ref=e3]:
-      - generic [ref=e4]:
-        - img "HyprFrsh" [ref=e5]
-        - heading "Welcome to HyprFrsh! 🌿" [level=2] [ref=e6]
-        - paragraph [ref=e7]: The freshest fruits & vegetables, straight from the farm to your table.
-      - button "Close" [active] [ref=e8] [cursor=pointer]:
-        - img [ref=e9]
-    - generic [ref=e12]:
-      - list [ref=e13]:
-        - listitem [ref=e14]:
-          - img [ref=e16]
-          - text: Farm-fresh produce, harvested daily
-        - listitem [ref=e19]:
-          - img [ref=e21]
-          - text: Convenient pickup points near you
-        - listitem [ref=e24]:
-          - img [ref=e26]
-          - text: No preservatives, 100% natural
-      - generic [ref=e29]:
-        - paragraph [ref=e30]: Welcome Offer
-        - generic [ref=e31]:
-          - img [ref=e32]
-          - paragraph [ref=e36]: Get ₹60 wallet balance on your first order!
-      - generic [ref=e37]:
-        - link "Start Shopping" [ref=e38] [cursor=pointer]:
-          - /url: /
-        - button "Maybe Later" [ref=e39] [cursor=pointer]
+  - dialog:
+    - generic:
+      - heading [level=2]: Sign in
+      - paragraph: Sign in to your account
+    - generic:
+      - generic:
+        - generic:
+          - generic: "+91"
+          - textbox:
+            - /placeholder: 10-digit mobile number
+        - button [disabled]: Send OTP
+    - button:
+      - img
+      - generic: Close
+  - dialog [ref=e3]:
+    - generic [ref=e4]:
+      - heading [level=2] [ref=e5]: Sign in
+      - paragraph [ref=e6]: Sign in to your account
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: "+91"
+        - textbox [active] [ref=e11]:
+          - /placeholder: 10-digit mobile number
+          - text: "8888888888"
+      - button [ref=e12] [cursor=pointer]: Send OTP
+    - button [ref=e13] [cursor=pointer]:
+      - img [ref=e14]
+      - generic [ref=e17]: Close
 ```
 
 # Test source
 
 ```ts
-  1  | const { test, expect } = require('@playwright/test');
+  1  | import { test, expect } from '@playwright/test';
   2  | 
-  3  | test('hyfrshwebsite', async ({ page }) => {
+  3  | test('Hyprfrsh login button test', async ({ page }) => {
   4  | 
-  5  |    await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
-  6  |   await page.waitForTimeout(1500);
+  5  |   await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
+  6  |   await page.waitForTimeout(2000);
   7  | 
-  8  |   // Close promo popup
-  9  |   const popupClose = page.locator('button[aria-label="Close"]');
-  10 |   if (await popupClose.isVisible()) {
-  11 |     await popupClose.click({ force: true });
-  12 |     console.log("Popup closed");
-  13 |   }
+  8  |   await page.locator('button:has-text("Select manually")').click();
+  9  |   console.log("Clicked Select Manually");
+  10 | 
+  11 |   await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
+  12 |   console.log("Midas Tower selected");
+  13 |   await page.waitForTimeout(1500);
   14 | 
-  15 |   // Click Select manually
-  16 |   await page.locator('button:has-text("Select manually")').click();
-  17 |   console.log("Clicked Select Manually");
-  18 |   await page.waitForTimeout(1000);
+  15 |   const loginBtn = page.getByRole('button', { name: /sign in/i });
+  16 |   await loginBtn.waitFor({ state: 'visible', timeout: 20000 });
+  17 |   await loginBtn.click();
+  18 |   console.log("Login button clicked!");
   19 | 
-  20 |   // Select Midas Tower
-  21 |   await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
-  22 |   console.log("Midas Tower selected");
-  23 | 
-  24 |  await page.waitForLoadState('load');
-  25 |   await page.waitForTimeout(1500);
-  26 | 
-  27 |   // 🔍 SEARCH for Watermelon
-  28 | const searchInput = page.locator('input[aria-label="Search products"]:visible');
-  29 | 
-  30 | await expect(searchInput.first()).toBeVisible({ timeout: 8000 });
-  31 | 
-> 32 | await searchInput.first().click();
-     |                           ^ Error: locator.click: Test timeout of 30000ms exceeded.
-  33 | await searchInput.first().fill('watermelon');
-  34 | await page.keyboard.press('Enter');
+  20 |   // ⭐ FIND THE REAL LOGIN SHEET
+  21 |   const loginSheet = page.locator(
+  22 |     'div[role="dialog"]:has(input[placeholder="10-digit mobile number"])'
+  23 |   );
+  24 | 
+  25 |   await loginSheet.first().waitFor({ state: 'visible', timeout: 10000 });
+  26 |   console.log("Correct login sheet detected!");
+  27 | 
+  28 |   // PHONE NUMBER INPUT
+  29 |   const mobileInput = loginSheet.locator('input[placeholder="10-digit mobile number"]');
+  30 |   await mobileInput.first().fill('8888888888');
+  31 |   console.log("Mobile number entered!");
+  32 | 
+  33 | // SEND OTP BUTTON
+  34 | const sendOtpBtn = loginSheet.getByRole('button', { name: /send otp/i });
   35 | 
-  36 | console.log("Searching watermelon...");
-  37 | await page.waitForTimeout(2000);
+  36 | // ⭐ Wait until button is enabled
+> 37 | await expect(sendOtpBtn).toBeEnabled({ timeout: 15000 });
+     |                          ^ Error: expect(locator).toBeEnabled() failed
   38 | 
-  39 |   // ADD Watermelon
-  40 |   const addBtn = page.locator('button[aria-label="Add Watermelon Kiran to cart"]');
-  41 |   await addBtn.scrollIntoViewIfNeeded();
-  42 |   await expect(addBtn).toBeVisible({ timeout: 10000 });
-  43 |   await addBtn.click();
-  44 |   console.log("Watermelon added");
-  45 | 
-  46 |   // Increase quantity 2 times
-  47 |   const plus = page.locator('button[aria-label*="Increase Quantity"]');
-  48 |   await plus.first().click();
-  49 |   await plus.first().click();
-  50 |   console.log("Quantity increased to 3");
-  51 | 
-  52 | //   // Open Cart
-  53 | //   await page.locator('a[aria-label*="Cart"]').click();
-  54 | //   console.log("Cart opened!");
-  55 | 
-  56 | 
-  57 | 
-  58 | });
+  39 | await sendOtpBtn.click();
+  40 | console.log("OTP sent!");
+  41 | });
 ```
