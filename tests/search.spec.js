@@ -22,34 +22,70 @@ test('Hyprfrsh Website Flow', async ({ page }) => {
     await page.waitForLoadState('load');
     await page.waitForTimeout(1500);
   });
+
+    // Close promo popup
+  const popupClose = page.locator('button[aria-label="Close"]');
+  if (await popupClose.isVisible()) {
+    await popupClose.click({ force: true });
+    console.log("Popup closed");
+  }
+
   // 🔍 SEARCH for Watermelon
-const searchInput = page.locator('input[aria-label="Search products"]:visible');
+  const searchInput = page.locator('input[aria-label="Search products"]:visible');
 
-await expect(searchInput.first()).toBeVisible({ timeout: 8000 });
+  await expect(searchInput.first()).toBeVisible({ timeout: 8000 });
 
-await searchInput.first().click();
-await searchInput.first().fill('watermelon');
-await page.keyboard.press('Enter');
+  await searchInput.first().click();
+  await searchInput.first().fill('watermelon');
+  await page.keyboard.press('Enter');
 
-console.log("Searching watermelon...");
-await page.waitForTimeout(2000);
+  console.log("Searching watermelon...");
+  await page.waitForTimeout(2000);
 
-// Wait for the product card to appear
-await page.waitForSelector('a[aria-label="View details for Watermelon Kiran"]', { timeout: 15000 });
+  // Wait for the product card
+  await page.waitForSelector('a[aria-label="View details for Watermelon Kiran"]', { timeout: 15000 });
 
-// Click the product to open details page
-await page.locator('a[aria-label="View details for Watermelon Kiran"]').click();
-console.log("Watermelon Kiran product opened!");
+  // Open product details
+  await page.locator('a[aria-label="View details for Watermelon Kiran"]').click();
+  console.log("Watermelon Kiran product opened!");
 
-// Wait for product details page to load
-await page.waitForSelector('section', { timeout: 10000 });
+  // Wait for product page
+  await page.waitForSelector('section', { timeout: 10000 });
 
-// Scroll down smoothly on details page
-for (let i = 0; i < 5; i++) {
-  await page.mouse.wheel(0, 600);
-  await page.waitForTimeout(500);
-}
+  // Scroll down
+  for (let i = 0; i < 5; i++) {
+    await page.mouse.wheel(0, 600);
+    await page.waitForTimeout(500);
+  }
 
-console.log("Scrolled down on product details page");
+  console.log("Scrolled down on product details page");
 
+  // CLICK ADD BUTTON
+  await test.step('Add Watermelon Kiran to cart', async () => {
+    const addBtn = page.getByRole('button', {
+      name: /add watermelon kiran to cart/i,
+    });
+
+    await expect(addBtn).toBeVisible({ timeout: 8000 });
+
+    await addBtn.click();
+    console.log("Product added to cart!");
+
+    await page.waitForTimeout(2000);
+  });
+
+  // OPEN CART PAGE
+await test.step('Open Cart Page', async () => {
+  const cartButton = page.getByRole('link', { name: 'Cart' });
+
+  await expect(cartButton).toBeVisible({ timeout: 5000 });
+
+  await cartButton.click();
+  console.log("Cart page opened!");
+
+  await page.waitForURL('**/shopping-cart/**', { timeout: 10000 });
+
+  await page.waitForTimeout(2000);
 });
+
+});   // <-- THIS BRACE WAS MISSING (End of test)
