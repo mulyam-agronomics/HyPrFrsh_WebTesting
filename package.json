@@ -4,12 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test",
+    "coverage": "nyc --reporter=lcov --reporter=text npm test"
   },
-  "scripts": {
-  "test": "playwright test",
-  "coverage": "nyc --reporter=lcov --reporter=text npm test"
-},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,21 +24,20 @@
     "istanbul-reports": "^3.2.0",
     "nyc": "^18.0.0"
   },
-
   "nyc": {
-  "extension": [
-    ".js"
-  ],
-  "include": [
-    "your-app-folder/**/*.js"
-  ],
-  "exclude": [
-    "tests/**/*.js"
-  ],
-  "reporter": [
-    "text",
-    "lcov"
-  ],
-  "all": true
-}
+    "extension": [
+      ".js"
+    ],
+    "include": [
+      "your-app-folder/**/*.js"
+    ],
+    "exclude": [
+      "tests/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "all": true
+  }
 }

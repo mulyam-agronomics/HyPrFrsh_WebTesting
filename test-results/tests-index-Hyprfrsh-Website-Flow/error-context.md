@@ -18,7 +18,31 @@ Test timeout of 30000ms exceeded.
 ```
 Error: locator.click: Test timeout of 30000ms exceeded.
 Call log:
-  - waiting for getByRole('img', { name: 'Fresh produce delivered fast' })
+  - waiting for locator('a[href="/products/"] img.object-cover').first()
+    - locator resolved to <img alt="Fresh Vegetables" src="/assets/promo1.webp" class="w-full h-auto object-cover"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    8 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+    - waiting for element to be visible, enabled and stable
 
 ```
 
@@ -2464,8 +2488,7 @@ Call log:
   35 |   await page.waitForSelector('img[alt="Fresh produce delivered fast"]', { timeout: 10000 });
   36 | 
   37 |   // Click the banner image
-> 38 |   await page.getByRole('img', { name: 'Fresh produce delivered fast' }).click();
-     |                                                                         ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  38 |   await page.getByRole('img', { name: 'Fresh produce delivered fast' }).click();
   39 |   console.log("Hero banner image clicked");
   40 | 
   41 |   // Scroll down slowly to load content
@@ -2488,7 +2511,8 @@ Call log:
   58 | 
   59 |   await expect(secondBanner).toBeVisible();
   60 | 
-  61 |   await secondBanner.click();
+> 61 |   await secondBanner.click();
+     |                      ^ Error: locator.click: Test timeout of 30000ms exceeded.
   62 |   console.log("Second banner clicked");
   63 | 
   64 |   await expect(page).toHaveURL(/\/products\//);

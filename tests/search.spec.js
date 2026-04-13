@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('Hyprfrsh Website Flow', async ({ page }) => {
+test('Hyprfrsh search function', async ({ page }) => {
 
   // STEP 1: Open website
   await test.step('Open Website', async () => {

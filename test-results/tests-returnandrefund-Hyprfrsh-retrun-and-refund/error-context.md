@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: tests\search.spec.js >> Hyprfrsh Website Flow
-- Location: tests\search.spec.js:3:1
+- Name: tests\returnandrefund.spec.js >> Hyprfrsh retrun and refund
+- Location: tests\returnandrefund.spec.js:3:5
 
 # Error details
 
@@ -18,8 +18,8 @@ Test timeout of 30000ms exceeded.
 ```
 Error: locator.click: Test timeout of 30000ms exceeded.
 Call log:
-  - waiting for locator('input[aria-label="Search products"]:visible').first()
-    - locator resolved to <input value="" id="_r_3_" type="search" placeholder=" " aria-label="Search products" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-10 pr-4"/>
+  - waiting for getByRole('button', { name: /sign in/i })
+    - locator resolved to <button type="button" aria-label="Sign in" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">Login</button>
   - attempting click action
     2 × waiting for element to be visible, enabled and stable
       - element is visible, enabled and stable
@@ -35,16 +35,13 @@ Call log:
       - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
     - retrying click action
       - waiting 100ms
-    34 × waiting for element to be visible, enabled and stable
+    41 × waiting for element to be visible, enabled and stable
        - element is visible, enabled and stable
        - scrolling into view if needed
        - done scrolling
        - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
      - retrying click action
        - waiting 500ms
-    - waiting for element to be visible, enabled and stable
-    - element is visible, enabled and stable
-    - scrolling into view if needed
 
 ```
 
@@ -2453,96 +2450,130 @@ Call log:
 # Test source
 
 ```ts
-  1  | const { test, expect } = require('@playwright/test');
-  2  | 
-  3  | test('Hyprfrsh Website Flow', async ({ page }) => {
-  4  | 
-  5  |   // STEP 1: Open website
-  6  |   await test.step('Open Website', async () => {
-  7  |     await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
-  8  |     await page.waitForTimeout(3000);
-  9  |   });
-  10 | 
-  11 |   // STEP 3: Click Select Manually
-  12 |   await test.step('Select Manually', async () => {
-  13 |     await page.locator('button:has-text("Select manually")').click();
-  14 |     console.log("Clicked Select Manually");
-  15 |     await page.waitForTimeout(1000);
-  16 |   });
-  17 | 
-  18 |   // STEP 4: Choose Pickup Point
-  19 |   await test.step('Select Pickup Location (Midas Tower)', async () => {
-  20 |     await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
-  21 |     console.log("Midas Tower selected");
-  22 |     await page.waitForLoadState('load');
-  23 |     await page.waitForTimeout(1500);
-  24 |   });
-  25 | 
-  26 |     // Close promo popup
-  27 |   const popupClose = page.locator('button[aria-label="Close"]');
-  28 |   if (await popupClose.isVisible()) {
-  29 |     await popupClose.click({ force: true });
-  30 |     console.log("Popup closed");
-  31 |   }
-  32 | 
-  33 |   // 🔍 SEARCH for Watermelon
-  34 |   const searchInput = page.locator('input[aria-label="Search products"]:visible');
-  35 | 
-  36 |   await expect(searchInput.first()).toBeVisible({ timeout: 8000 });
-  37 | 
-> 38 |   await searchInput.first().click();
-     |                             ^ Error: locator.click: Test timeout of 30000ms exceeded.
-  39 |   await searchInput.first().fill('watermelon');
-  40 |   await page.keyboard.press('Enter');
-  41 | 
-  42 |   console.log("Searching watermelon...");
-  43 |   await page.waitForTimeout(2000);
-  44 | 
-  45 |   // Wait for the product card
-  46 |   await page.waitForSelector('a[aria-label="View details for Watermelon Kiran"]', { timeout: 15000 });
-  47 | 
-  48 |   // Open product details
-  49 |   await page.locator('a[aria-label="View details for Watermelon Kiran"]').click();
-  50 |   console.log("Watermelon Kiran product opened!");
-  51 | 
-  52 |   // Wait for product page
-  53 |   await page.waitForSelector('section', { timeout: 10000 });
-  54 | 
-  55 |   // Scroll down
-  56 |   for (let i = 0; i < 5; i++) {
-  57 |     await page.mouse.wheel(0, 600);
-  58 |     await page.waitForTimeout(500);
-  59 |   }
-  60 | 
-  61 |   console.log("Scrolled down on product details page");
-  62 | 
-  63 |   // CLICK ADD BUTTON
-  64 |   await test.step('Add Watermelon Kiran to cart', async () => {
-  65 |     const addBtn = page.getByRole('button', {
-  66 |       name: /add watermelon kiran to cart/i,
-  67 |     });
-  68 | 
-  69 |     await expect(addBtn).toBeVisible({ timeout: 8000 });
-  70 | 
-  71 |     await addBtn.click();
-  72 |     console.log("Product added to cart!");
-  73 | 
-  74 |     await page.waitForTimeout(2000);
-  75 |   });
-  76 | 
-  77 |   // OPEN CART PAGE
-  78 | await test.step('Open Cart Page', async () => {
-  79 |   const cartButton = page.getByRole('link', { name: 'Cart' });
-  80 | 
-  81 |   await expect(cartButton).toBeVisible({ timeout: 5000 });
-  82 | 
-  83 |   await cartButton.click();
-  84 |   console.log("Cart page opened!");
-  85 | 
-  86 |   await page.waitForURL('**/shopping-cart/**', { timeout: 10000 });
-  87 | 
-  88 |   await page.waitForTimeout(2000);
-  89 | });
-  90 | 
-  91 | });   // <-- THIS BRACE WAS MISSING (End of test)
+  1   | import { test, expect } from '@playwright/test';
+  2   | 
+  3   | test('Hyprfrsh retrun and refund', async ({ page }) => {
+  4   | 
+  5   |   // 1. OPEN WEBSITE
+  6   |   await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
+  7   |   await page.waitForTimeout(2000);
+  8   | 
+  9   |   // 2. SELECT LOCATION
+  10  |   await page.locator('button:has-text("Select manually")').click();
+  11  |   console.log("Clicked Select Manually");
+  12  | 
+  13  |   await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
+  14  |   console.log("Midas Tower selected");
+  15  |   await page.waitForTimeout(1500);
+  16  | 
+  17  |   
+  18  |   // Close promo popup
+  19  |   const popupClose = page.locator('button[aria-label="Close"]');
+  20  |   if (await popupClose.isVisible()) {
+  21  |     await popupClose.click({ force: true });
+  22  |     console.log("Popup closed");
+  23  |   }
+  24  | 
+  25  | 
+  26  |   // 3. OPEN LOGIN SHEET
+  27  |   const loginBtn = page.getByRole('button', { name: /sign in/i });
+  28  |   await loginBtn.waitFor({ state: 'visible', timeout: 30000 });
+> 29  |   await loginBtn.click();
+      |                  ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  30  |   console.log("Login button clicked!");
+  31  | 
+  32  |   // 4. WAIT FOR LOGIN SHEET
+  33  |   const loginSheet = page.locator(
+  34  |     'div[role="dialog"]:has(input[placeholder="10-digit mobile number"])'
+  35  |   );
+  36  |   await loginSheet.first().waitFor({ state: 'visible', timeout: 30000 });
+  37  | 
+  38  |   // 5. ENTER MOBILE NUMBER
+  39  |   const mobileInput = loginSheet.locator('input[placeholder="10-digit mobile number"]');
+  40  |   await mobileInput.first().fill('8888888888');
+  41  |   console.log("Mobile number entered!");
+  42  | 
+  43  |   // 6. CLICK ENABLED "SEND OTP" BUTTON (FIXED)
+  44  |   const sendOTP = page.locator('button[aria-label="Send OTP"]:not([disabled])');
+  45  |   await expect(sendOTP).toBeVisible({ timeout: 30000 });
+  46  |   await expect(sendOTP).toBeEnabled({ timeout: 30000 });
+  47  | 
+  48  |   await sendOTP.click();
+  49  |   console.log("Send OTP clicked!");
+  50  | 
+  51  |   // 7. WAIT FOR OTP INPUT
+  52  | await page.waitForSelector('input[aria-label="Digit 1 of 6"]', { timeout: 30000 });
+  53  | console.log("OTP inputs visible!");
+  54  | 
+  55  | // --- FILL OTP 123456 ---
+  56  | await page.locator('input[aria-label="Digit 1 of 6"]').fill('1');
+  57  | await page.locator('input[aria-label="Digit 2 of 6"]').fill('2');
+  58  | await page.locator('input[aria-label="Digit 3 of 6"]').fill('3');
+  59  | await page.locator('input[aria-label="Digit 4 of 6"]').fill('4');
+  60  | await page.locator('input[aria-label="Digit 5 of 6"]').fill('5');
+  61  | await page.locator('input[aria-label="Digit 6 of 6"]').fill('6');
+  62  | 
+  63  | console.log("OTP 123456 entered!");
+  64  | 
+  65  | // --- OPEN SPECIFIC PRODUCT ---
+  66  | // const productLink = page.locator('a[aria-label="View details for Apple Royal Gala"]');
+  67  | // await productLink.waitFor({ state: 'visible', timeout: 20000 });
+  68  | // await productLink.click();
+  69  | // console.log("Opened product: Apple Royal Gala");
+  70  | 
+  71  | 
+  72  |  // --- PROFILE MENU ---
+  73  |   // Pick visible avatar button only
+  74  |   const avatarButton = page.locator('div.relative.inline-flex button:visible');
+  75  |   await avatarButton.waitFor({ state: 'visible', timeout: 30000 });
+  76  |   await avatarButton.click();
+  77  |   console.log('Profile menu opened!');
+  78  | 
+  79  |   // --- CLICK RETURN & REFUND ---
+  80  | const refundLink = page.getByRole('link', { name: /refund & cancellation/i });
+  81  | 
+  82  | // Wait for it to be visible
+  83  | await refundLink.waitFor({ state: 'visible', timeout: 20000 });
+  84  | 
+  85  | // Click it
+  86  | await refundLink.click();
+  87  | 
+  88  | console.log("Refund & Cancellation page opened!");
+  89  | 
+  90  | // Optional: verify navigation
+  91  | await expect(page).toHaveURL(/refund-policy/);
+  92  | 
+  93  | // --- SCROLL DOWN TO CONTACT US ---
+  94  | const contactLink = page.getByRole('link', { name: /contact us/i });
+  95  | 
+  96  | // Scroll into view
+  97  | await contactLink.scrollIntoViewIfNeeded();
+  98  | 
+  99  | // Wait until visible
+  100 | await expect(contactLink).toBeVisible({ timeout: 20000 });
+  101 | 
+  102 | console.log("Scrolled to Contact Us link!");
+  103 | 
+  104 | // --- CLICK CONTACT US ---
+  105 | await contactLink.click();
+  106 | 
+  107 | console.log("Contact Us page opened!");
+  108 | 
+  109 | // --- VERIFY NAVIGATION ---
+  110 | await expect(page).toHaveURL(/contact/);
+  111 | 
+  112 |  // 13. HANDLE EMAIL LINK
+  113 |   const emailLink = page.getByRole('link', { name: 'support@hyprfrsh.com' }).first();
+  114 | 
+  115 |   await emailLink.scrollIntoViewIfNeeded();
+  116 |   await expect(emailLink).toBeVisible();
+  117 | 
+  118 |   // Validate mailto link
+  119 |   const href = await emailLink.getAttribute('href');
+  120 |   expect(href).toContain('mailto:support@hyprfrsh.com');
+  121 | 
+  122 |   console.log("Email link validated!");
+  123 | 
+  124 | 
+  125 | });
 ```

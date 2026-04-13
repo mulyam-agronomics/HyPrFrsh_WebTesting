@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: tests\web.spec.js >> Hyprfrsh Website Flow
-- Location: tests\web.spec.js:3:1
+- Name: tests\profile.spec.js >> Hyprfrsh profile test
+- Location: tests\profile.spec.js:3:5
 
 # Error details
 
@@ -18,7 +18,34 @@ Test timeout of 30000ms exceeded.
 ```
 Error: locator.click: Test timeout of 30000ms exceeded.
 Call log:
-  - waiting for getByRole('img', { name: 'Fresh produce delivered fast' })
+  - waiting for locator('button[aria-label="Send OTP"]:not([disabled])')
+    - locator resolved to <button type="button" aria-label="Send OTP" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">Send OTP</button>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is not stable
+  - retrying click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+  - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    41 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div data-state="open" aria-hidden="true" data-aria-hidden="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"></div> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+    - waiting for element to be visible, enabled and stable
 
 ```
 
@@ -2394,170 +2421,199 @@ Call log:
                 - text: Google Play — Coming Soon
         - paragraph: "\"HyprFrsh\" is a fresh produce and grocery delivery platform of HYPRFRSH TECHNOLOGIES PRIVATE LIMITED. All rights reserved."
   - alert
-  - dialog "Welcome to HyprFrsh! 🌿" [ref=e2]:
-    - generic [ref=e3]:
-      - generic [ref=e4]:
-        - img "HyprFrsh" [ref=e5]
-        - heading "Welcome to HyprFrsh! 🌿" [level=2] [ref=e6]
-        - paragraph [ref=e7]: The freshest fruits & vegetables, straight from the farm to your table.
-      - button "Close" [active] [ref=e8] [cursor=pointer]:
-        - img [ref=e9]
-    - generic [ref=e12]:
-      - list [ref=e13]:
-        - listitem [ref=e14]:
-          - img [ref=e16]
+  - dialog:
+    - generic:
+      - heading [level=2]: Sign in
+      - paragraph: Sign in to your account
+    - generic:
+      - generic:
+        - generic:
+          - generic: "+91"
+          - textbox:
+            - /placeholder: 10-digit mobile number
+        - button [disabled]: Send OTP
+    - button:
+      - img
+      - generic: Close
+  - dialog:
+    - generic:
+      - heading [level=2]: Sign in
+      - paragraph: Sign in to your account
+    - generic:
+      - generic:
+        - generic:
+          - generic: "+91"
+          - textbox:
+            - /placeholder: 10-digit mobile number
+            - text: "8888888888"
+        - button: Send OTP
+    - button:
+      - img
+      - generic: Close
+  - dialog "Welcome to HyprFrsh! 🌿" [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img "HyprFrsh" [ref=e7]
+        - heading "Welcome to HyprFrsh! 🌿" [level=2] [ref=e8]
+        - paragraph [ref=e9]: The freshest fruits & vegetables, straight from the farm to your table.
+      - button "Close" [active] [ref=e10] [cursor=pointer]:
+        - img [ref=e11]
+    - generic [ref=e14]:
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - img [ref=e18]
           - text: Farm-fresh produce, harvested daily
-        - listitem [ref=e19]:
-          - img [ref=e21]
+        - listitem [ref=e21]:
+          - img [ref=e23]
           - text: Convenient pickup points near you
-        - listitem [ref=e24]:
-          - img [ref=e26]
+        - listitem [ref=e26]:
+          - img [ref=e28]
           - text: No preservatives, 100% natural
-      - generic [ref=e29]:
-        - paragraph [ref=e30]: Welcome Offer
-        - generic [ref=e31]:
-          - img [ref=e32]
-          - paragraph [ref=e36]: Get ₹50 wallet balance on your first order!
-      - generic [ref=e37]:
-        - link "Start Shopping" [ref=e38] [cursor=pointer]:
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: Welcome Offer
+        - generic [ref=e33]:
+          - img [ref=e34]
+          - paragraph [ref=e38]: Get ₹50 wallet balance on your first order!
+      - generic [ref=e39]:
+        - link "Start Shopping" [ref=e40] [cursor=pointer]:
           - /url: /
-        - button "Maybe Later" [ref=e39] [cursor=pointer]
+        - button "Maybe Later" [ref=e41] [cursor=pointer]
 ```
 
 # Test source
 
 ```ts
-  1   | const { test, expect } = require('@playwright/test');
+  1   | import { test, expect } from '@playwright/test';
   2   | 
-  3   | test('Hyprfrsh Website Flow', async ({ page }) => {
+  3   | test('Hyprfrsh profile test', async ({ page }) => {
   4   | 
-  5   |   // STEP 1: Open website
-  6   |   await test.step('Open Website', async () => {
-  7   |     await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
-  8   |     await page.waitForTimeout(3000);
-  9   |   });
-  10  | 
-  11  |   // STEP 3: Click Select Manually
-  12  |   await test.step('Select Manually', async () => {
-  13  |     await page.locator('button:has-text("Select manually")').click();
-  14  |     console.log("Clicked Select Manually");
-  15  |     await page.waitForTimeout(1000);
-  16  |   });
-  17  | 
-  18  |   // STEP 4: Choose Pickup Point
-  19  |   await test.step('Select Pickup Location (Midas Tower)', async () => {
-  20  |     await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
-  21  |     console.log("Midas Tower selected");
-  22  |     await page.waitForLoadState('load');
-  23  |     await page.waitForTimeout(1500);
-  24  |   });
+  5   |   // 1. OPEN WEBSITE
+  6   |   await page.goto('https://hyprfrsh.com', { waitUntil: "domcontentloaded" });
+  7   |   await page.waitForTimeout(2000);
+  8   | 
+  9   |   // 2. SELECT LOCATION
+  10  |   await page.locator('button:has-text("Select manually")').click();
+  11  |   console.log("Clicked Select Manually");
+  12  | 
+  13  |   await page.locator('button[aria-label="Select Midas Tower for pick-up"]').click();
+  14  |   console.log("Midas Tower selected");
+  15  |   await page.waitForTimeout(1500);
+  16  | 
+  17  |   
+  18  |   // Close promo popup
+  19  |   // const popupClose = page.locator('button[aria-label="Close"]');
+  20  |   // if (await popupClose.isVisible()) {
+  21  |   //   await popupClose.click({ force: true });
+  22  |   //   console.log("Popup closed");
+  23  |   // }
+  24  | 
   25  | 
-  26  |   await test.step('Click Hero Banner and Scroll', async () => {
-  27  | 
-  28  |   // Wait for image to appear
-  29  |   await page.waitForSelector('img[alt="Fresh produce delivered fast"]', { timeout: 10000 });
-  30  | 
-  31  |   // Click the banner image
-> 32  |   await page.getByRole('img', { name: 'Fresh produce delivered fast' }).click();
-      |                                                                         ^ Error: locator.click: Test timeout of 30000ms exceeded.
-  33  |   console.log("Hero banner image clicked");
-  34  | 
-  35  |   // Scroll down slowly to load content
-  36  |   for (let i = 0; i < 4; i++) {
-  37  |     await page.mouse.wheel(0, 500);
-  38  |     await page.waitForTimeout(600);
-  39  |   }
-  40  | 
-  41  |   console.log("Scrolled after opening banner");
-  42  | });
-  43  | 
-  44  | 
-  45  |   // STEP 5: Click All Products Category
-  46  |   await test.step('Open All Products Category', async () => {
-  47  |   await page.waitForSelector('span:has-text("All Products")', { timeout: 15000 });
-  48  |   
-  49  |   await page.locator('button:has-text("All Products")').first().click();
-  50  |   console.log("All Products clicked");
-  51  | 
-  52  |   // Scroll page to load products
-  53  |   for (let i = 0; i < 4; i++) {
-  54  |     await page.mouse.wheel(0, 600);
-  55  |     await page.waitForTimeout(600);
-  56  |   }
-  57  | });
-  58  | 
-  59  | await test.step('Open Fresh leafy Category', async () => {
-  60  | 
-  61  |   // Wait for Fresh leafy button using correct selector
-  62  |   await page.waitForSelector('button:has-text("Fresh leafy")', { timeout: 15000 });
-  63  | 
-  64  |   // Scroll into view if needed
-  65  |   await page.evaluate(() => window.scrollBy(0, 300));
-  66  | 
-  67  |   // Click the Fresh leafy category
-  68  |   await page.getByRole('button', { name: /Fresh leafy/i }).click();
-  69  | 
-  70  |   console.log("Fresh leafy category clicked");
-  71  |   await page.waitForTimeout(2000);
-  72  | });
-  73  | 
-  74  | await test.step('Open Vegetables Category', async () => {
-  75  | 
-  76  |   await page.getByRole('button', { name: 'Vegetables' }).click();
-  77  |   console.log("Vegetables category clicked");
+  26  |   // 3. OPEN LOGIN SHEET
+  27  |   const loginBtn = page.getByRole('button', { name: /sign in/i });
+  28  |   await loginBtn.waitFor({ state: 'visible', timeout: 20000 });
+  29  |   await loginBtn.click();
+  30  |   console.log("Login button clicked!");
+  31  | 
+  32  |   // 4. WAIT FOR LOGIN SHEET
+  33  |   const loginSheet = page.locator(
+  34  |     'div[role="dialog"]:has(input[placeholder="10-digit mobile number"])'
+  35  |   );
+  36  |   await loginSheet.first().waitFor({ state: 'visible', timeout: 20000 });
+  37  | 
+  38  |   // 5. ENTER MOBILE NUMBER
+  39  |   const mobileInput = loginSheet.locator('input[placeholder="10-digit mobile number"]');
+  40  |   await mobileInput.first().fill('8888888888');
+  41  |   console.log("Mobile number entered!");
+  42  | 
+  43  |   // 6. CLICK ENABLED "SEND OTP" BUTTON (FIXED)
+  44  |   const sendOTP = page.locator('button[aria-label="Send OTP"]:not([disabled])');
+  45  |   await expect(sendOTP).toBeVisible({ timeout: 20000 });
+  46  |   await expect(sendOTP).toBeEnabled({ timeout: 20000 });
+  47  | 
+> 48  |   await sendOTP.click();
+      |                 ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  49  |   console.log("Send OTP clicked!");
+  50  | 
+  51  |   // 7. WAIT FOR OTP INPUT
+  52  | await page.waitForSelector('input[aria-label="Digit 1 of 6"]', { timeout: 20000 });
+  53  | console.log("OTP inputs visible!");
+  54  | 
+  55  | // --- FILL OTP 123456 ---
+  56  | await page.locator('input[aria-label="Digit 1 of 6"]').fill('1');
+  57  | await page.locator('input[aria-label="Digit 2 of 6"]').fill('2');
+  58  | await page.locator('input[aria-label="Digit 3 of 6"]').fill('3');
+  59  | await page.locator('input[aria-label="Digit 4 of 6"]').fill('4');
+  60  | await page.locator('input[aria-label="Digit 5 of 6"]').fill('5');
+  61  | await page.locator('input[aria-label="Digit 6 of 6"]').fill('6');
+  62  | 
+  63  | console.log("OTP 123456 entered!");
+  64  | 
+  65  | // --- OPEN SPECIFIC PRODUCT ---
+  66  | // const productLink = page.locator('a[aria-label="View details for Apple Royal Gala"]');
+  67  | // await productLink.waitFor({ state: 'visible', timeout: 20000 });
+  68  | // await productLink.click();
+  69  | // console.log("Opened product: Apple Royal Gala");
+  70  | 
+  71  | 
+  72  |  // --- PROFILE MENU ---
+  73  |   // Pick visible avatar button only
+  74  |   const avatarButton = page.locator('div.relative.inline-flex button:visible');
+  75  |   await avatarButton.waitFor({ state: 'visible', timeout: 10000 });
+  76  |   await avatarButton.click();
+  77  |   console.log('Profile menu opened!');
   78  | 
-  79  |   await page.waitForSelector('[data-testid="product-card"], .grid, [class*="product"]');
-  80  | 
-  81  |   await page.evaluate(() => {
-  82  |     const productSection = document.querySelector('.grid, [data-testid="product-card"]');
-  83  |     if (productSection) {
-  84  |       productSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  85  |     }
-  86  |   });
-  87  | 
-  88  |   console.log("Scrolled to vegetable products");
-  89  |   await page.waitForTimeout(2000);
-  90  | });
-  91  | 
-  92  | await test.step('Open Fruits Category', async () => {
-  93  | 
-  94  |   // Click Fruits category
-  95  |   await page.getByRole('button', { name: 'Fruits' }).click();
-  96  |   console.log("Fruits category clicked");
-  97  | 
-  98  |   // Wait for products to load (any product card)
-  99  |   await page.waitForSelector('[data-testid="product-card"], .grid, [class*="product"]', {
-  100 |     timeout: 15000
-  101 |   });
+  79  | // Now click Profile
+  80  | await page.waitForSelector('a[href="/profile/"]', { state: 'visible' });
+  81  | await page.click('a[href="/profile/"]');
+  82  | 
+  83  | // Verify profile page opened
+  84  | await expect(page).toHaveURL(/\/profile/);
+  85  | 
+  86  |  // --- 2. PAGE TITLE ---
+  87  |   await expect(page.locator('h1')).toHaveText('Profile');
+  88  | 
+  89  |   // --- 3. PROFILE IMAGE ---
+  90  |   const profileImg = page.locator('img[src*="profile_images"]');
+  91  |   await expect(profileImg).toBeVisible();
+  92  | 
+  93  |   // Remove icon
+  94  |   await expect(page.locator('span[aria-label="Remove profile picture"]')).toBeVisible();
+  95  | 
+  96  |   // Camera icon
+  97  |   await expect(page.locator('.lucide-camera')).toBeVisible();
+  98  | 
+  99  |   // --- 4. WALLET BALANCE ---
+  100 |   const walletText = page.locator('text=Wallet Balance');
+  101 |   await expect(walletText).toBeVisible();
   102 | 
-  103 |   // Scroll the products section
-  104 |   await page.evaluate(() => {
-  105 |     const productSection = document.querySelector('.grid, [data-testid="product-card"]');
-  106 |     if (productSection) {
-  107 |       productSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  108 |     }
-  109 |   });
-  110 | 
-  111 |   console.log("Scrolled to fruit products");
-  112 | 
-  113 |   await page.waitForTimeout(2000);
-  114 | });
-  115 | 
-  116 | await test.step('Open Exotics Category', async () => {
-  117 | 
-  118 |   // Click the Exotics category
-  119 |   await page.getByRole('button', { name: 'Exotics' }).click();
-  120 |   console.log("Exotics category clicked");
-  121 | 
-  122 |   // Wait for products to load
-  123 |   await page.waitForSelector('[data-testid="product-card"], .grid, [class*="product"]', {
-  124 |     timeout: 15000
-  125 |   });
+  103 |   const walletAmount = page.locator('p.text-lg.font-bold.text-primary');
+  104 |   await expect(walletAmount).toHaveText('100.00');
+  105 | 
+  106 |   // --- 5. PHONE NUMBER (read-only box) ---
+  107 |   const phoneNumber = page.locator('div.text-muted-foreground.select-none');
+  108 |   await expect(phoneNumber).toHaveText('+918888888888');
+  109 | 
+  110 |   // --- 6. FULL NAME INPUT ---
+  111 |   const nameInput = page.locator('input[placeholder="Enter your name"]');
+  112 |   await expect(nameInput).toHaveValue('void testing');
+  113 |   await nameInput.fill('New Test Name');
+  114 | 
+  115 |   // --- 7. EMAIL INPUT ---
+  116 |   const emailInput = page.locator('input[type="email"]');
+  117 |   await expect(emailInput).toHaveValue('void@test.in');
+  118 |   await emailInput.fill('newtest@example.com');
+  119 | 
+  120 |   // --- 8. PICK-UP POINT SELECT ---
+  121 |   const pickupSelect = page.locator('select');
+  122 |   await expect(pickupSelect).toBeVisible();
+  123 | 
+  124 |   await pickupSelect.selectOption('1');
+  125 |   await expect(pickupSelect).toHaveValue('1');
   126 | 
-  127 |   // Scroll to product section
-  128 |   await page.evaluate(() => {
-  129 |     const productSection = document.querySelector('.grid, [data-testid="product-card"]');
-  130 |     if (productSection) {
-  131 |       productSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  132 |     }
+  127 |   // --- 9. SAVE CHANGES BUTTON ---
+  128 |   const saveButton = page.locator('button:has-text("Save changes")');
+  129 |   await expect(saveButton).toBeVisible();
+  130 | 
+  131 |   await saveButton.click();
+  132 | });
 ```

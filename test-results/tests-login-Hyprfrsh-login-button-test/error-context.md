@@ -16,7 +16,7 @@ Test timeout of 30000ms exceeded.
 ```
 
 ```
-Error: locator.waitFor: Test timeout of 30000ms exceeded.
+TimeoutError: locator.waitFor: Timeout 20000ms exceeded.
 Call log:
   - waiting for getByRole('button', { name: /sign in/i }) to be visible
 
@@ -2455,7 +2455,7 @@ Call log:
   26  |   // 3. OPEN LOGIN SHEET
   27  |   const loginBtn = page.getByRole('button', { name: /sign in/i });
 > 28  |   await loginBtn.waitFor({ state: 'visible', timeout: 20000 });
-      |                  ^ Error: locator.waitFor: Test timeout of 30000ms exceeded.
+      |                  ^ TimeoutError: locator.waitFor: Timeout 20000ms exceeded.
   29  |   await loginBtn.click();
   30  |   console.log("Login button clicked!");
   31  | 
